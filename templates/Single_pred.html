@@ -1,0 +1,362 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>Airline Passenger Satisfaction Prediction</title>
+<style>  
+body {  
+     background-image: url("https://thumbs.dreamstime.com/z/airplane-passenger-airbus-isolated-white-background-side-view-33419066.jpg?w=992");
+ background-size: cover;
+background-repeat: no-repeat;
+background-position: right top;
+background-attachment: fixed;
+  margin-left:100px; 
+} 
+
+
+ .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 10px;
+
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 10px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 55%;
+            margin-top: 6px;
+        }
+
+ input[type=text],
+        select,
+        textarea {
+            width: 30%;
+            padding: 8px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+ label {
+  color: white;
+  padding: 5px;
+display: block;
+font-weight: bold;
+  background-color: #A6A6A6; color: black;} 
+ 
+
+ input[type=submit] {
+  background-color: #525252;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+margin: auto;
+  position: fixed;
+	   left: 50%;
+	   top:50%;
+  cursor: pointer;
+ font : OCR A; 
+font-weight: bold; 
+width: 200px;
+font-size: 20px; 
+padding: 10px; 
+border-radius: 5px; border: 3px solid yellow;  color: white; display: inline-block; padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  
+display: flex;  
+justify-content: center;  
+align-items: center;  
+}
+
+h1
+ {text-align: center;}
+
+
+</style>  
+</head> 
+ 
+<body>  
+<h1 text-align: "center";>Airline Passenger Satisfaction Prediction</h1>
+
+
+<div class="form">
+        <form action="{{url_for('predict_data')}}" method="POST">
+            <label for="operation"></label>
+
+            <div class="container">
+                <form action="/action_page.php">
+                   
+		    <!-- Gender -->
+		     <div class="row">
+                        <div class="col-25">
+                            <label for="Gender">Gender</label>
+                        </div>
+                        <div class="col-75">
+                            <select id="Gender" name="Gender">
+                                <option value="0">Male</option>
+                                <option value="1">Female</option>
+                            </select>
+                        </div>
+                </div>
+
+            <!-- Customer_Type -->
+		     <div class="row">
+                        <div class="col-25">
+                            <label for="Customer_Type">Customer Type : </label>
+                        </div>
+                        <div class="col-75">
+                            <select id="Customer_Type" name="Customer_Type">
+                                <option value="0">Loyal Customer</option>
+                                <option value="1">DisLoyal Customer</option>
+                            </select>
+                        </div>
+                    </div>
+
+             <!-- Age -->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Age">Enter Age  </label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Age" name="Age" placeholder="Enter Your Age">
+                        </div>
+                    </div>
+
+              <!-- Type_of_Travel -->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Type_of_Travel">Select your Travel Type</label>
+                        </div>
+                        <div class="col-75">
+                            <select id="Type_of_Travel" name="Type_of_Travel">
+                                <option value="0"> Business Travel</option>
+                                <option value="1">Personal Travel</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+	      <!-- Type_of_class -->
+
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Class_Type">Select Category of travel</label>
+                        </div>
+                        <div class="col-75">
+                            <select id="Class_Type" name="Class_Type">
+                                <option value="0" selected>Eco</option>
+                                <option value="1">Business</option>
+                                <option value="2" >ECO  Plus</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                <!-- Flight Distance -->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Flight_Distance">Enter Flight Distance</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Flight_Distance" name="Flight_Distance" placeholder="Enter Your value">
+                        </div>
+                    </div>
+
+                 <!--Inflight_wifi_service -->
+                     <div class="row">
+                        <div class="col-25">
+                            <label for="Inflight_wifi_service">Inflight wifi service</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Inflight_wifi_service" name="Inflight_wifi_service"
+                                placeholder="Enter Your value between 1 to 5">
+                        </div>
+                    </div>
+
+
+                 <!--Departure/Arrival time convenient -->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Departure_Arrival_time">Departure/Arrival time convenient </label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Departure_Arrival_time" name="Departure_Arrival_time" placeholder="Enter Your value">
+                        </div>
+                    </div>
+
+
+                 <!--Ease of Online booking-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Ease_of_Online_booking">Ease of Online booking </label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Ease_of_Online_booking" name="Ease_of_Online_booking"
+                                placeholder="Enter Your value (1-5)">
+                        </div>
+                    </div>
+                   
+
+                <!--Gate_location -->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Gate_location">Gate_location </label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Gate_location"
+                                name="Gate_location" placeholder="Enter Your value(1-5)">
+                        </div>
+                    </div>
+ 
+
+
+                 <!--Food and drink-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Food_and_drink">Food and Drink </label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Food_and_drink" name="Food_and_drink"
+                                placeholder="Enter Your value (1-5)">
+                        </div>
+                    </div>
+
+                <!--Online boarding-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Online_boarding">Online Boarding </label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Online_boarding" name="Online_boarding"
+                                placeholder="Enter Your value (1-5) ">
+                        </div>
+                    </div>
+
+                 <!-- Seat comfort-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Seat_comfort">Seat Comfort </label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Seat_comfort" name="Seat_comfort" placeholder="Enter Your value(1-5) ">
+                        </div>
+                    </div>
+
+               <!--Inflight entertainment-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Inflight_entertainment">Inflight Entertainment </label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Inflight_entertainment" name="Inflight_entertainment"
+                                placeholder="Enter Your value (1-5)">
+                        </div>
+                    </div>
+
+               <!--On-board service-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="On_board_service">On-Board Service</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="On_board_service" name="On_board_service" placeholder="Enter Your value (1-5) ">
+                        </div>
+                    </div>
+
+                <!--Leg room service-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Leg_room_service">Leg Room Service</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Leg_room_service" name="Leg_room_service" placeholder="Enter Your value (1-5)">
+                        </div>
+                    </div>
+
+
+                <!--Baggage handling-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Baggage_handling">Baggage Handling</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Baggage_handling" name="Baggage_handling" placeholder="Enter Your value (1-5)">
+                        </div>
+                    </div>
+
+                <!--Checkin service-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Checkin_service">Check in Service</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Checkin_service" name="Checkin_service" placeholder="Enter Your value(1-5)">
+                        </div>
+                    </div>
+
+                <!-- Inflight service-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Inflight_service">Inflight Service</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Inflight_service" name="Inflight_service" placeholder="Enter Your value (1-5)">
+                        </div>
+                    </div>
+
+                <!--Cleanliness-->
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="Cleanliness">Cleanliness</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Cleanliness" name="Cleanliness"
+                                placeholder="Enter Your value (1-5)">
+                        </div>
+                    </div>
+
+
+               <!--Departure_Delay_in_Minutes-->
+                   <div class="row">
+                        <div class="col-25">
+                            <label for="Departure_Delay_in_Minutes">Departure_Delay_in_Minutes</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Departure_Delay_in_Minutes" name="Departure_Delay_in_Minutes" placeholder="Enter Your value (1-5)">
+                        </div>
+                    </div>
+
+
+
+                <!--Arrival_Delay_in_Minutes
+
+                   <div class="row">
+                        <div class="col-25">
+                            <label for="Arrival_Delay_in_Minutes">Arrival_Delay_in_Minutes</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="Arrival_Delay_in_Minutes" name="Arrival_Delay_in_Minutes" placeholder="Enter Your value (1-5)">
+                        </div>
+                    </div> -->
+
+        
+                   <!--Submit Button-->
+ 		   <div class="row" class="center">
+                        <input type="submit"  value=" SUBMIT ">
+                   </div>
+	
+	
+		
+</div>
+</form>
+
+</body>
+
+</html>
